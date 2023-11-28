@@ -175,6 +175,9 @@ endif()
 include(clang-tidy)
 include(coverage)
 
+# Apply code formatting
+add_custom_target(format COMMAND ${PROJECT_SOURCE_DIR}/resources/scripts/auto-format.sh)
+
 if (TARGET Doxygen::doxygen)
 	add_subdirectory(doxygen-conf)
 endif()
