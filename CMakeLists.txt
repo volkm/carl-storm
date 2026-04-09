@@ -128,7 +128,7 @@ if ("${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang") # Matches "Clang" and "AppleClan
 	endif()
 	if (APPLE)
 		message(STATUS "carl - Using clang ${CMAKE_CXX_COMPILER_VERSION} on Apple")
-		set(CMAKE_MACOSX_RPATH 1)
+		set(CMAKE_MACOSX_RPATH ON)
 		add_compile_options(-stdlib=libc++)
 	else()
 		message(STATUS "carl - Using clang ${CMAKE_CXX_COMPILER_VERSION}")
@@ -233,18 +233,17 @@ endif()
 SET(CMAKE_SKIP_BUILD_RPATH  FALSE)
 # when building, don't use the install RPATH already (but only when installing)
 SET(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+
+if (APPLE)
+	SET(RPATH_ORIGIN_EQUIV "@loader_path")
+else()
+	SET(RPATH_ORIGIN_EQUIV "$ORIGIN")
+endif()
 # the RPATH to be used when installing
-SET(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-# don't add the automatically determined parts of the RPATH
+SET(CMAKE_INSTALL_RPATH "${RPATH_ORIGIN_EQUIV};${RPATH_ORIGIN_EQUIV}/lib")
+# do not add the automatically determined parts of the RPATH
 # which point to directories outside the build tree to the install RPATH
-SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-
-
-# the RPATH to be used when installing, but only if it's not a system directory
-list(FIND CMAKE_PLATFORM_IMPLICIT_LINK_DIRECTORIES "${CMAKE_INSTALL_PREFIX}/lib" isSystemDir)
-if("${isSystemDir}" STREQUAL "-1")
-	set(CMAKE_INSTALL_RPATH "${CMAKE_INSTALL_PREFIX}/lib")
-endif("${isSystemDir}" STREQUAL "-1")
+SET(CMAKE_INSTALL_RPATH_USE_LINK_PATH OFF)
 
 
 # # # # # # # # # # # # # # # # # # # # # #
