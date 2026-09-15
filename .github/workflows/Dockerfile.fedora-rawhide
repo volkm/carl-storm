@@ -36,6 +36,7 @@ ARG GINAC_VERSION=1.8.10
 RUN dnf install -y \
     autoconf \
     automake \
+    bzip2 \
     clang \
     cmake \
     gcc \
