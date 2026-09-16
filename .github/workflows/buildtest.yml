@@ -119,7 +119,7 @@ jobs:
             }
           - {name: "MacOS 27, ARM",
              distro: "xcode-27",
-             xcode: "latest-stable",
+             xcode: "latest",
              build_type: "Debug"
             }
     runs-on: ${{ matrix.config.distro }}
