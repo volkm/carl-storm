@@ -67,6 +67,8 @@ Monomial::Arg MonomialPool::add(const Monomial::Arg& _monomial) {
     return MonomialPool::add(std::move(PoolEntry(_monomial->hash(), _monomial->exponents(), _monomial)));
 }
 #endif
+CARL_DEFINE_SINGLETON_INSTANCE(MonomialPool)
+
 Monomial::Arg MonomialPool::add(Monomial::Content&& c, exponent totalDegree) {
     return MonomialPool::add(PoolEntry(std::move(c)), totalDegree);
 }

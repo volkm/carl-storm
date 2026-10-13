@@ -10,6 +10,8 @@
 
 namespace carl {
 
+CARL_DEFINE_SINGLETON_INSTANCE(SortManager)
+
 std::ostream& SortManager::print(std::ostream& os, const Sort& sort) const {
     const SortContent& sc = getContent(sort);
     if (sc.indices != nullptr)
