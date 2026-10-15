@@ -1,6 +1,13 @@
 Changelog
 ==============
 
+## Version 14.37 (2026/10)
+- Fixed issue with transitivity of < operator on RationalFunction
+- Fixed `isNan` for intervals
+- Fixed singletons to ensure uniqueness
+- Fixed various compiler warnings
+- Use a GitHub eigen mirror. 
+
 ## Version 14.36 (2026/08)
 - Requires CMake version >= 3.25.
 - Fixed a number of compiler warnings.
