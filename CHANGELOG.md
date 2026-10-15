@@ -6,6 +6,7 @@ Changelog
 - Fixed `isNan` for intervals
 - Fixed singletons to ensure uniqueness
 - Fixed various compiler warnings
+- Use a GitHub eigen mirror. 
 
 ## Version 14.36 (2026/08)
 - Requires CMake version >= 3.25.
